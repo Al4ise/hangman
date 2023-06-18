@@ -9,10 +9,9 @@ public class Template
 
         Console.Clear();
 
-        // each iteration of loop is a new game; doesn't work for now.
+        // each iteration of loop is a new game
+        Game g;
         for(int i=1; i<=players; i++){
-
-            Game g;
             switch(wordChoiceMenu(i)){
                 case 1:
                     Console.Write("Write Word: ");
