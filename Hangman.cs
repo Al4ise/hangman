@@ -1,4 +1,3 @@
-// Martin Pelteshki 11/3
 using System;
 
 public class Template
