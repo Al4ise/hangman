@@ -90,12 +90,29 @@ public class Template
             Console.WriteLine();    
         }
 
-        // print final scores
-        foreach (KeyValuePair<string, int> entry in scores)
+        // currently, each player has a stored count of of their losses. we need to count their wins
+        // we do this by creating a new dictionary, scoresPrint
+        // here, each player's score' is the sum of all ther players' losses 
+
+        Dictionary<string, int> scoresPrint = new Dictionary<string, int>();
+        int temp=0;
+        foreach (KeyValuePair<string, int> entry1 in scores){
+            foreach (KeyValuePair<string, int> entry2 in scores){
+                if(entry1.Key!=entry2.Key){
+                    temp += entry2.Value;
+                }
+            }
+            scoresPrint[entry1.Key]=temp;
+            temp=0;
+        }
+
+        // print everyone's 'win' scores
+        foreach (KeyValuePair<string, int> entry in scoresPrint)
         {
             Console.WriteLine($"{entry.Key}: {entry.Value}");
         }
     }
+    
     // returns 1 if player chooses word, 2 if computer chooses word, prompts player to pick6
     public static int wordChoiceMenu(string i){
         // pick who chooses word menu
